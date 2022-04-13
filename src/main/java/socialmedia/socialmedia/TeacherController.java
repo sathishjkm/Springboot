@@ -9,8 +9,8 @@ import java.util.List;
 public class TeacherController {
     @Autowired
     private TeacherService teacherService;
-
-    @RequestMapping(method = RequestMethod.POST, value = "/teacher")
+    @PostMapping("/teacher")
+//    @RequestMapping(method = RequestMethod.POST, value = "/teacher")
     public void addTeacher(@RequestBody Teacher teacher) {
         teacherService.addTeacher(teacher);
     }
@@ -29,6 +29,18 @@ public class TeacherController {
     @RequestMapping(method = RequestMethod.DELETE, value = "/teacher/{teacher_id}")
     public void deleteTeacher(@PathVariable("teacher_id") String teacher_id) {
         teacherService.deleteTeacher(teacher_id);
+    }
+    @RequestMapping(method = RequestMethod.POST,value = "/teacher_ids")
+    public List<Teacher> addTeachRequst(@RequestBody TeacherIdRequest  techid){
+        return teacherService.addTeachRequst(techid.getIds());
+    }
+    @RequestMapping(method = RequestMethod.POST,value = "/customTeacher")
+    public List<CustomTeacher>addcustomTeacher(@RequestBody TeacherIdRequest techid){
+        return teacherService.addcustomTeacher(techid.getIds());
+    }
+    @RequestMapping(method = RequestMethod.POST,value = "/teacher_name")
+    public List<Teacher> addTeachname(@RequestBody TeacherNameRequst  teacher_name){
+        return teacherService.addTeachRequst(teacher_name.getNames());
     }
 }
 
