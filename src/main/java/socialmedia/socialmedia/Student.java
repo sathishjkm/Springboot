@@ -1,18 +1,25 @@
 package socialmedia.socialmedia;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name="sathish_student")
 public class Student {
-    private String id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
     private String name;
     private String className;
-    public Student(String id, String name, String className) {
+    public Student(int id, String name, String className) {
         this.id = id;
         this.name = name;
         this.className = className;
     }
-    public String getId() {
+    public Student(){}
+    public int getId() {
         return id;
     }
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
     public String getName() {

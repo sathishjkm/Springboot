@@ -1,19 +1,26 @@
 package socialmedia.socialmedia;
 
+import javax.annotation.processing.Generated;
+import javax.persistence.*;
+
+@Entity
+@Table(name ="sathish_teacher")
 public class Teacher {
-    private String id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
     private String name;
     private String subject;
     public Teacher(){}
-    public Teacher(String id, String name, String subject) {
+    public Teacher(int id, String name, String subject) {
         this.id = id;
         this.name = name;
         this.subject = subject;
     }
-    public String getId() {
+    public int getId() {
         return id;
     }
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
     public String getName() {
