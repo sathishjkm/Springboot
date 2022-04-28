@@ -1,31 +1,13 @@
 package socialmedia.socialmedia;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import java.util.*;
+import java.util.List;
+import java.util.Optional;
 
-@Service
-public class StudentService {
-    @Autowired
-    private StudentRepository studentRepository;
+public interface StudentService {
+    List<Student> getStudents();
+    Student createStudent(Student student);
+    Optional<Student> getStudentById(Integer id);
+    Student updateStudentById(Student student, Integer student_id);
+    void deleteStudentById(Integer id);
 
-    public void addStudent(Student student) {
-        studentRepository.save(student);
-    }
-
-    public List<Student> getStudents() {
-        return studentRepository.findAll();
-    }
-
-    public Optional<Student> getStudent(int student_id) {
-        return studentRepository.findById(student_id);
-    }
-
-    public Student updateStudent(Student student, int student_id) {
-        student.setId(student_id);
-            return studentRepository.save(student);
-        }
-    public void deleteStudent(int student_id){
-        studentRepository.deleteById(student_id);
-    }
 }
